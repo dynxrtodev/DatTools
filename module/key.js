@@ -417,11 +417,10 @@ function hideLoading() {
                         currentFile = text;
                         preview.textContent = `Loaded JSON file (${text.length} characters)\nPreview:\n${text.substring(0, 500)}${text.length > 500 ? '...' : ''}`;
                     } else if (file.name.endsWith('.txt')) {
-                        currentFileType = 'txt';
-                        const text = new TextDecoder().decode(arrayBuffer);
-                        currentFile = text;
-                        preview.textContent = `Loaded TXT file (${text.length} characters)\nPreview:\n${text.substring(0, 500)}${text.length > 500 ? '...' : ''}`;
-                    }
+                    currentFileType = 'txt';
+                    currentFile = event.target.result;
+                    preview.textContent = `Loaded TXT file (${currentFile.length} characters)\nPreview:\n${currentFile.substring(0, 500)}${currentFile.length > 500 ? '...' : ''}`;
+                            }
                     
                     updateButtonStates();
                     showStatus('File loaded successfully: ' + file.name, 'success');
